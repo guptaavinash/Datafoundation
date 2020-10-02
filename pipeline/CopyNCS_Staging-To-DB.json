@@ -61,6 +61,10 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
+								"expression": {
+									"value": "@activity('GetFileList').output",
+									"type": "Expression"
+								},
 								"ifTrueActivities": [
 									{
 										"name": "location master data",
