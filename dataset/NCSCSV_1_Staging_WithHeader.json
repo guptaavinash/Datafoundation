@@ -13,7 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "2001595628_20190131.zip",
 				"container": "ncsdata"
 			},
 			"columnDelimiter": ",",
