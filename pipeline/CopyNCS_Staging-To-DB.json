@@ -61,10 +61,6 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"expression": {
-									"value": "@bool(startswith(item().name,'AUG'))",
-									"type": "Expression"
-								},
 								"ifTrueActivities": [
 									{
 										"name": "location master data",
@@ -100,7 +96,6 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFileName": "AUG_Sales*",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
