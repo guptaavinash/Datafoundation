@@ -67,9 +67,16 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "location master data",
+										"name": "NCS Sales",
 										"type": "Copy",
-										"dependsOn": [],
+										"dependsOn": [
+											{
+												"activity": "SpFileEntry",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
 										"policy": {
 											"timeout": "7.00:00:00",
 											"retry": 0,
@@ -122,7 +129,7 @@
 												"mappings": [
 													{
 														"source": {
-															"name": "SRCE_SYS_ID",
+															"name": "document_no",
 															"type": "String"
 														},
 														"sink": {
@@ -132,7 +139,7 @@
 													},
 													{
 														"source": {
-															"name": "FACT_TYPE_CODE",
+															"name": "apply_to_doc",
 															"type": "String"
 														},
 														"sink": {
@@ -142,7 +149,7 @@
 													},
 													{
 														"source": {
-															"name": "SBMSN_TYPE_CODE",
+															"name": "document_date",
 															"type": "String"
 														},
 														"sink": {
@@ -152,27 +159,27 @@
 													},
 													{
 														"source": {
-															"name": "INVDATE",
+															"name": "transaction_type",
 															"type": "String"
 														},
 														"sink": {
-															"name": "INVDATE",
+															"name": "DUE_PERD",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
+															"name": "subbrandform_name",
+															"type": "String"
+														},
+														"sink": {
 															"name": "TIME_PERD_TYPE_CODE",
 															"type": "String"
-														},
-														"sink": {
-															"name": "TIME_PERD_TYPE_CODE",
-															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "TIME_PERD_START_DATE",
+															"name": "prod_name",
 															"type": "String"
 														},
 														"sink": {
@@ -182,37 +189,37 @@
 													},
 													{
 														"source": {
-															"name": "StoreCode",
+															"name": "customer_name",
 															"type": "String"
 														},
 														"sink": {
-															"name": "StoreCode",
+															"name": "CUST_ID",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "PrdCde",
+															"name": "customer_code",
 															"type": "String"
 														},
 														"sink": {
-															"name": "PrdCde",
+															"name": "PROD_ID",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
+															"name": "channel_description",
+															"type": "String"
+														},
+														"sink": {
 															"name": "GEO_ID",
 															"type": "String"
-														},
-														"sink": {
-															"name": "GEO_ID",
-															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "ORG_ID",
+															"name": "dse",
 															"type": "String"
 														},
 														"sink": {
@@ -222,7 +229,7 @@
 													},
 													{
 														"source": {
-															"name": "LEGAL_ENT_ID",
+															"name": "pcode",
 															"type": "String"
 														},
 														"sink": {
@@ -232,7 +239,7 @@
 													},
 													{
 														"source": {
-															"name": "PROFT_CTR_ID",
+															"name": "customer_type",
 															"type": "String"
 														},
 														"sink": {
@@ -242,7 +249,7 @@
 													},
 													{
 														"source": {
-															"name": "SCNDR_SHIP_FLAG",
+															"name": "hsn_code",
 															"type": "String"
 														},
 														"sink": {
@@ -252,7 +259,7 @@
 													},
 													{
 														"source": {
-															"name": "TRADE_CHANL_ID",
+															"name": "category",
 															"type": "String"
 														},
 														"sink": {
@@ -262,7 +269,7 @@
 													},
 													{
 														"source": {
-															"name": "ISO_CRNCY_CODE_CHAR",
+															"name": "brand",
 															"type": "String"
 														},
 														"sink": {
@@ -272,7 +279,7 @@
 													},
 													{
 														"source": {
-															"name": "MM_HYBRID_ID",
+															"name": "brandform",
 															"type": "String"
 														},
 														"sink": {
@@ -282,7 +289,7 @@
 													},
 													{
 														"source": {
-															"name": "FUNC_ID",
+															"name": "quantity",
 															"type": "String"
 														},
 														"sink": {
@@ -292,7 +299,7 @@
 													},
 													{
 														"source": {
-															"name": "CAPTL_ID",
+															"name": "gross_value",
 															"type": "String"
 														},
 														"sink": {
@@ -302,7 +309,7 @@
 													},
 													{
 														"source": {
-															"name": "MEASR_ID",
+															"name": "discount",
 															"type": "String"
 														},
 														"sink": {
@@ -312,7 +319,7 @@
 													},
 													{
 														"source": {
-															"name": "DEMND_PLAN_CUST_GRP_CODE",
+															"name": "taxable_scheme",
 															"type": "String"
 														},
 														"sink": {
@@ -322,7 +329,7 @@
 													},
 													{
 														"source": {
-															"name": "GENRC_DMNSN_1_TYPE_ID",
+															"name": "cgsttax",
 															"type": "String"
 														},
 														"sink": {
@@ -332,27 +339,27 @@
 													},
 													{
 														"source": {
-															"name": "BranchCode",
+															"name": "sgsttax",
 															"type": "String"
 														},
 														"sink": {
-															"name": "BranchCode",
+															"name": "GENRC_DMNSN_1_ID",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
+															"name": "igsttax",
+															"type": "String"
+														},
+														"sink": {
 															"name": "GENRC_DMNSN_2_TYPE_ID",
 															"type": "String"
-														},
-														"sink": {
-															"name": "GENRC_DMNSN_2_TYPE_ID",
-															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "GENRC_DMNSN_2_ID",
+															"name": "cesstax",
 															"type": "String"
 														},
 														"sink": {
@@ -362,7 +369,7 @@
 													},
 													{
 														"source": {
-															"name": "GENRC_DMNSN_3_TYPE_ID",
+															"name": "mracc_code",
 															"type": "String"
 														},
 														"sink": {
@@ -372,7 +379,7 @@
 													},
 													{
 														"source": {
-															"name": "GENRC_DMNSN_3_ID",
+															"name": "mracc_desc",
 															"type": "String"
 														},
 														"sink": {
@@ -382,7 +389,7 @@
 													},
 													{
 														"source": {
-															"name": "FACT_QLTY_CODE",
+															"name": "vendor",
 															"type": "String"
 														},
 														"sink": {
@@ -392,7 +399,7 @@
 													},
 													{
 														"source": {
-															"name": "ATTR_VAL_1",
+															"name": "net_amount",
 															"type": "String"
 														},
 														"sink": {
@@ -402,51 +409,41 @@
 													},
 													{
 														"source": {
-															"name": "Amount",
+															"name": "tax_on_discount",
 															"type": "String"
 														},
 														"sink": {
-															"name": "Amount",
+															"name": "FACT_AMT_1",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
+															"name": "tax_on_scheme",
+															"type": "String"
+														},
+														"sink": {
 															"name": "ATTR_VAL_2",
 															"type": "String"
+														}
+													},
+													{
+														"source": {
+															"name": "tax_in_rlp",
+															"type": "String"
 														},
 														"sink": {
-															"name": "ATTR_VAL_2",
+															"name": "FACT_AMT_2",
 															"type": "String"
 														}
 													},
 													{
 														"source": {
-															"name": "Qty",
-															"type": "String"
-														},
-														"sink": {
-															"name": "Qty",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "FACT_AMT_3",
+															"name": "retailing",
 															"type": "String"
 														},
 														"sink": {
 															"name": "FACT_AMT_3",
-															"type": "String"
-														}
-													},
-													{
-														"source": {
-															"name": "InstanceName",
-															"type": "String"
-														},
-														"sink": {
-															"name": "InstanceName",
 															"type": "String"
 														}
 													}
@@ -461,10 +458,50 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "tmpRTDXSales",
+												"referenceName": "NCS_Sales_Temp",
 												"type": "DatasetReference"
 											}
 										]
+									},
+									{
+										"name": "SpFileEntry",
+										"type": "SqlServerStoredProcedure",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"storedProcedureName": "SpFileEntry",
+											"storedProcedureParameters": {
+												"Filename": {
+													"value": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
+													"type": "String"
+												},
+												"FileType": {
+													"value": "1",
+													"type": "Byte"
+												},
+												"LastModifiedDatetime": {
+													"value": {
+														"value": "@activity('GetFileList').output.lastModified",
+														"type": "Expression"
+													},
+													"type": "DateTime"
+												}
+											}
+										},
+										"linkedServiceName": {
+											"referenceName": "PnGDataFoundation",
+											"type": "LinkedServiceReference"
+										}
 									}
 								]
 							}
