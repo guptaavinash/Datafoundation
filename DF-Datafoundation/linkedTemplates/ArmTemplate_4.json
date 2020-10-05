@@ -14377,7 +14377,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('FilterFiles').output.childItems\n",
+								"value": "@activity('FilterFiles').output.Value\n",
 								"type": "Expression"
 							},
 							"batchCount": 20,
@@ -14389,7 +14389,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"expression": {
-											"value": "@activity('GetFileList').output.childItems",
+											"value": "@activity('GetFileList').output.Value",
 											"type": "Expression"
 										},
 										"ifTrueActivities": [
