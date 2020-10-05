@@ -62,7 +62,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@activity('GetFileList').output.value",
+									"value": "@activity('GetFileList').output.childItems",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
