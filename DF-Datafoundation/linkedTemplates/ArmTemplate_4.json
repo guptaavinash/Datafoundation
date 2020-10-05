@@ -14389,7 +14389,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"expression": {
-											"value": "@activity('GetFileList').output.Value",
+											"value": "@activity('GetFileList').output.itemName",
 											"type": "Expression"
 										},
 										"ifTrueActivities": [
