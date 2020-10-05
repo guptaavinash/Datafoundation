@@ -147,7 +147,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "tmpSales"
+			"table": "tmpPSR"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
