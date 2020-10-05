@@ -14000,7 +14000,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"items": {
-								"value": "@activity('FilterFiles').output.value",
+								"value": "@activity('FilterFiles').output.childItems\n",
 								"type": "Expression"
 							},
 							"batchCount": 20,
@@ -14012,7 +14012,7 @@
 									"userProperties": [],
 									"typeProperties": {
 										"expression": {
-											"value": "@activity('GetFileList').output.value",
+											"value": "@activity('GetFileList').output.childItems",
 											"type": "Expression"
 										},
 										"ifTrueActivities": [
@@ -30304,7 +30304,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -30389,7 +30389,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -30430,7 +30430,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
