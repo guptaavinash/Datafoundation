@@ -478,7 +478,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "temp"
+						"container": "ncsdata"
 					},
 					"columnDelimiter": ",",
 					"compressionCodec": "ZipDeflate",
@@ -508,7 +508,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"container": "temp"
+						"container": "ncsdata"
 					},
 					"compression": {
 						"type": "ZipDeflate",
