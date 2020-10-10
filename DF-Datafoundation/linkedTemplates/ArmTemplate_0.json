@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
 		},
+		"DataFoundationDW_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DataFoundationDW'"
+		},
+		"DataFoundationDW_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'DataFoundationDW'"
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
@@ -42,6 +50,14 @@
 		"TASDatabase_servicePrincipalKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'TASDatabase'"
+		},
+		"DataFoundationDW_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "7ec6607e-638a-46bf-9ff0-ea38bacb5ea9"
+		},
+		"DataFoundationDW_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "515445df-f272-4c96-aa97-d670cbdeab20"
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
@@ -94,6 +110,25 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('CCRDataStorageLink_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataFoundationDW')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('DataFoundationDW_connectionString')]",
+					"servicePrincipalId": "[parameters('DataFoundationDW_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('DataFoundationDW_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('DataFoundationDW_properties_typeProperties_tenant')]"
 				}
 			},
 			"dependsOn": []
@@ -984,47 +1019,6 @@
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "It describes the destination store.",
-				"linkedServiceName": {
-					"referenceName": "NCSdataStorageLink",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"Container": {
-						"type": "String"
-					},
-					"Directory": {
-						"type": "String"
-					},
-					"filename": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": {
-							"value": "@{dataset().Directory}",
-							"type": "Expression"
-						},
-						"container": {
-							"value": "@{dataset().Container}",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {

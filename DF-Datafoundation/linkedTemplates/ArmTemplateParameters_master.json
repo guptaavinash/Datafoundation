@@ -11,6 +11,12 @@
 		"CCRDataStorageLink_connectionString": {
 			"value": ""
 		},
+		"DataFoundationDW_connectionString": {
+			"value": ""
+		},
+		"DataFoundationDW_servicePrincipalKey": {
+			"value": ""
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"value": ""
 		},
@@ -31,6 +37,12 @@
 		},
 		"TASDatabase_servicePrincipalKey": {
 			"value": ""
+		},
+		"DataFoundationDW_properties_typeProperties_servicePrincipalId": {
+			"value": "7ec6607e-638a-46bf-9ff0-ea38bacb5ea9"
+		},
+		"DataFoundationDW_properties_typeProperties_tenant": {
+			"value": "515445df-f272-4c96-aa97-d670cbdeab20"
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"value": "AKIAW6LTDL6KHDJLBDO2"

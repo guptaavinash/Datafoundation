@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CCRDataStorageLink'"
 		},
+		"DataFoundationDW_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DataFoundationDW'"
+		},
+		"DataFoundationDW_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'DataFoundationDW'"
+		},
 		"Leap_AmazonS3_secretAccessKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'secretAccessKey' of 'Leap_AmazonS3'"
@@ -42,6 +50,14 @@
 		"TASDatabase_servicePrincipalKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'servicePrincipalKey' of 'TASDatabase'"
+		},
+		"DataFoundationDW_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "7ec6607e-638a-46bf-9ff0-ea38bacb5ea9"
+		},
+		"DataFoundationDW_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "515445df-f272-4c96-aa97-d670cbdeab20"
 		},
 		"Leap_AmazonS3_properties_typeProperties_accessKeyId": {
 			"type": "string",
@@ -21306,9 +21322,6 @@
 												"type": "AzureBlobStorageReadSettings",
 												"recursive": true
 											},
-											"formatSettings": {
-												"type": "BinaryReadSettings"
-											},
 											"recursive": false
 										},
 										"sink": {
@@ -21459,6 +21472,596 @@
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_Folder2')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataSource_File2')]",
 				"[concat(variables('factoryId'), '/datasets/BinaryDataDestination2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NCSdataLoad')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_s21",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "temp//"
+							},
+							{
+								"name": "Destination",
+								"value": "dbo.tmpPSR"
+							}
+						],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings",
+									"skipLineCount": 0,
+									"compressionProperties": {
+										"type": "ZipDeflateReadSettings"
+									}
+								}
+							},
+							"sink": {
+								"type": "SqlDWSink",
+								"allowPolyBase": true,
+								"polyBaseSettings": {
+									"rejectValue": 0,
+									"rejectType": "value",
+									"useTypeDefault": false
+								}
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "NCSdataStorageLink",
+									"type": "LinkedServiceReference"
+								},
+								"path": "tempstaging"
+							},
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "document_no",
+											"type": "String"
+										},
+										"sink": {
+											"name": "document_no",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "apply_to_doc",
+											"type": "String"
+										},
+										"sink": {
+											"name": "apply_to_doc",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "document_date",
+											"type": "String"
+										},
+										"sink": {
+											"name": "document_date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "transaction_type",
+											"type": "String"
+										},
+										"sink": {
+											"name": "transaction_type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "subbrandform_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "subbrandform_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "prod_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "prod_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "customer_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "customer_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "customer_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "customer_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "channel_description",
+											"type": "String"
+										},
+										"sink": {
+											"name": "channel_description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dse",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dse",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "pcode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "pcode",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "customer_type",
+											"type": "String"
+										},
+										"sink": {
+											"name": "customer_type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "hsn_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "hsn_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "category",
+											"type": "String"
+										},
+										"sink": {
+											"name": "category",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "brand",
+											"type": "String"
+										},
+										"sink": {
+											"name": "brand",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "brandform",
+											"type": "String"
+										},
+										"sink": {
+											"name": "brandform",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "quantity",
+											"type": "String"
+										},
+										"sink": {
+											"name": "quantity",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "gross_value",
+											"type": "String"
+										},
+										"sink": {
+											"name": "gross_value",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "discount",
+											"type": "String"
+										},
+										"sink": {
+											"name": "discount",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "taxable_scheme",
+											"type": "String"
+										},
+										"sink": {
+											"name": "taxable_scheme",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "cgsttax",
+											"type": "String"
+										},
+										"sink": {
+											"name": "cgsttax",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "sgsttax",
+											"type": "String"
+										},
+										"sink": {
+											"name": "sgsttax",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "igsttax",
+											"type": "String"
+										},
+										"sink": {
+											"name": "igsttax",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "cesstax",
+											"type": "String"
+										},
+										"sink": {
+											"name": "cesstax",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "mracc_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "mracc_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "mracc_desc",
+											"type": "String"
+										},
+										"sink": {
+											"name": "mracc_desc",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "vendor",
+											"type": "String"
+										},
+										"sink": {
+											"name": "vendor",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "net_amount",
+											"type": "String"
+										},
+										"sink": {
+											"name": "net_amount",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "tax_on_discount",
+											"type": "String"
+										},
+										"sink": {
+											"name": "tax_on_discount",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "tax_on_scheme",
+											"type": "String"
+										},
+										"sink": {
+											"name": "tax_on_scheme",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "tax_in_rlp",
+											"type": "String"
+										},
+										"sink": {
+											"name": "tax_in_rlp",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "retailing",
+											"type": "String"
+										},
+										"sink": {
+											"name": "retailing",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "gross_in_slp",
+											"type": "String"
+										},
+										"sink": {
+											"name": "gross_in_slp",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "po_no",
+											"type": "String"
+										},
+										"sink": {
+											"name": "po_no",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dse_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dse_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "msu",
+											"type": "String"
+										},
+										"sink": {
+											"name": "msu",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "reason",
+											"type": "String"
+										},
+										"sink": {
+											"name": "reason",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dist_gstinno",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dist_gstinno",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ret_gstinno",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ret_gstinno",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "srn_ref_no",
+											"type": "String"
+										},
+										"sink": {
+											"name": "srn_ref_no",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "composite",
+											"type": "String"
+										},
+										"sink": {
+											"name": "composite",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "cgsttax_rate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "cgsttax_rate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "sgsttax_rate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "sgsttax_rate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "igsttax_rate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "igsttax_rate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "cesstax_rate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "cesstax_rate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "branch_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "branch_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "branch_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "branch_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "order_mode",
+											"type": "String"
+										},
+										"sink": {
+											"name": "order_mode",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "tc_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "tc_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "tc_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "tc_name",
+											"type": "String"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SourceDataset_s21",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DestinationDataset_s21",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_s21')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_s21')]",
+				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
 			]
 		},
 		{
@@ -27639,6 +28242,228 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_s21')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "DataFoundationDW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [
+					{
+						"name": "document_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "apply_to_doc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "document_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "transaction_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subbrandform_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "prod_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse",
+						"type": "nvarchar"
+					},
+					{
+						"name": "pcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "hsn_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "category",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brand",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brandform",
+						"type": "nvarchar"
+					},
+					{
+						"name": "quantity",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_value",
+						"type": "nvarchar"
+					},
+					{
+						"name": "discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "taxable_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_desc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "vendor",
+						"type": "nvarchar"
+					},
+					{
+						"name": "net_amount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_in_rlp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailing",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_in_slp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "po_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "msu",
+						"type": "nvarchar"
+					},
+					{
+						"name": "reason",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dist_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ret_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "srn_ref_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "composite",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "order_mode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_name",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpPSR"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/DataFoundationDW')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LOCM_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -29993,6 +30818,236 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_s21')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "temp"
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"compressionCodec": "ZipDeflate",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "document_no",
+						"type": "String"
+					},
+					{
+						"name": "apply_to_doc",
+						"type": "String"
+					},
+					{
+						"name": "document_date",
+						"type": "String"
+					},
+					{
+						"name": "transaction_type",
+						"type": "String"
+					},
+					{
+						"name": "subbrandform_name",
+						"type": "String"
+					},
+					{
+						"name": "prod_name",
+						"type": "String"
+					},
+					{
+						"name": "customer_name",
+						"type": "String"
+					},
+					{
+						"name": "customer_code",
+						"type": "String"
+					},
+					{
+						"name": "channel_description",
+						"type": "String"
+					},
+					{
+						"name": "dse",
+						"type": "String"
+					},
+					{
+						"name": "pcode",
+						"type": "String"
+					},
+					{
+						"name": "customer_type",
+						"type": "String"
+					},
+					{
+						"name": "hsn_code",
+						"type": "String"
+					},
+					{
+						"name": "category",
+						"type": "String"
+					},
+					{
+						"name": "brand",
+						"type": "String"
+					},
+					{
+						"name": "brandform",
+						"type": "String"
+					},
+					{
+						"name": "quantity",
+						"type": "String"
+					},
+					{
+						"name": "gross_value",
+						"type": "String"
+					},
+					{
+						"name": "discount",
+						"type": "String"
+					},
+					{
+						"name": "taxable_scheme",
+						"type": "String"
+					},
+					{
+						"name": "cgsttax",
+						"type": "String"
+					},
+					{
+						"name": "sgsttax",
+						"type": "String"
+					},
+					{
+						"name": "igsttax",
+						"type": "String"
+					},
+					{
+						"name": "cesstax",
+						"type": "String"
+					},
+					{
+						"name": "mracc_code",
+						"type": "String"
+					},
+					{
+						"name": "mracc_desc",
+						"type": "String"
+					},
+					{
+						"name": "vendor",
+						"type": "String"
+					},
+					{
+						"name": "net_amount",
+						"type": "String"
+					},
+					{
+						"name": "tax_on_discount",
+						"type": "String"
+					},
+					{
+						"name": "tax_on_scheme",
+						"type": "String"
+					},
+					{
+						"name": "tax_in_rlp",
+						"type": "String"
+					},
+					{
+						"name": "retailing",
+						"type": "String"
+					},
+					{
+						"name": "gross_in_slp",
+						"type": "String"
+					},
+					{
+						"name": "po_no",
+						"type": "String"
+					},
+					{
+						"name": "dse_code",
+						"type": "String"
+					},
+					{
+						"name": "msu",
+						"type": "String"
+					},
+					{
+						"name": "reason",
+						"type": "String"
+					},
+					{
+						"name": "dist_gstinno",
+						"type": "String"
+					},
+					{
+						"name": "ret_gstinno",
+						"type": "String"
+					},
+					{
+						"name": "srn_ref_no",
+						"type": "String"
+					},
+					{
+						"name": "composite",
+						"type": "String"
+					},
+					{
+						"name": "cgsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "sgsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "igsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "cesstax_rate",
+						"type": "String"
+					},
+					{
+						"name": "branch_code",
+						"type": "String"
+					},
+					{
+						"name": "branch_name",
+						"type": "String"
+					},
+					{
+						"name": "order_mode",
+						"type": "String"
+					},
+					{
+						"name": "tc_code",
+						"type": "String"
+					},
+					{
+						"name": "tc_name",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/NCSdataStorageLink')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/TASDBConnection')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -30193,6 +31248,25 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('CCRDataStorageLink_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DataFoundationDW')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('DataFoundationDW_connectionString')]",
+					"servicePrincipalId": "[parameters('DataFoundationDW_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('DataFoundationDW_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('DataFoundationDW_properties_typeProperties_tenant')]"
 				}
 			},
 			"dependsOn": []

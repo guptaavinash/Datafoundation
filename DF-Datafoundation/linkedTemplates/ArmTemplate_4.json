@@ -13,6 +13,301 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/RETAIL_NCS_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/NCS Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "BRANCHCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "CUSTCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "CUSTNAME",
+						"type": "varchar"
+					},
+					{
+						"name": "CHANNEL",
+						"type": "varchar"
+					},
+					{
+						"name": "DSE",
+						"type": "varchar"
+					},
+					{
+						"name": "CUSTTYPE",
+						"type": "varchar"
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "NC_RETAILER_Current"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/RTRM_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TASDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/LEAP Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "branch_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_location",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailer_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailer_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "address_1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "address_2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "pin_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "area_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "area",
+						"type": "nvarchar"
+					},
+					{
+						"name": "town_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "town",
+						"type": "nvarchar"
+					},
+					{
+						"name": "town_class",
+						"type": "nvarchar"
+					},
+					{
+						"name": "city",
+						"type": "nvarchar"
+					},
+					{
+						"name": "state",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mobile_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "phone_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "contact_person",
+						"type": "nvarchar"
+					},
+					{
+						"name": "stl_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "frequency",
+						"type": "nvarchar"
+					},
+					{
+						"name": "distance",
+						"type": "nvarchar"
+					},
+					{
+						"name": "class_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "class",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subchannel_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subchannel",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mr_account_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mr_account_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "credit_limit",
+						"type": "nvarchar"
+					},
+					{
+						"name": "credit_period",
+						"type": "nvarchar"
+					},
+					{
+						"name": "invoice_limit",
+						"type": "nvarchar"
+					},
+					{
+						"name": "certificate_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gst_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "pan_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dl_number",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dl_expiry_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "email",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dob",
+						"type": "nvarchar"
+					},
+					{
+						"name": "doa",
+						"type": "nvarchar"
+					},
+					{
+						"name": "status",
+						"type": "nvarchar"
+					},
+					{
+						"name": "default_warehouse_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "default_warehouse",
+						"type": "nvarchar"
+					},
+					{
+						"name": "restricted_orderswap_status",
+						"type": "nvarchar"
+					},
+					{
+						"name": "lattitude",
+						"type": "nvarchar"
+					},
+					{
+						"name": "longitude",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailer_radius",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileSetId",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpRawLEAPTAS_RTRM"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/S3LeapDataSet_Cloud1_File')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -770,6 +1065,234 @@
 					"schema": "dbo",
 					"table": "NC_SRN_SUBD_Current"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_s21')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "NCSdataStorageLink",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "temp"
+					},
+					"columnDelimiter": ",",
+					"rowDelimiter": "\r",
+					"compressionCodec": "ZipDeflate",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "document_no",
+						"type": "String"
+					},
+					{
+						"name": "apply_to_doc",
+						"type": "String"
+					},
+					{
+						"name": "document_date",
+						"type": "String"
+					},
+					{
+						"name": "transaction_type",
+						"type": "String"
+					},
+					{
+						"name": "subbrandform_name",
+						"type": "String"
+					},
+					{
+						"name": "prod_name",
+						"type": "String"
+					},
+					{
+						"name": "customer_name",
+						"type": "String"
+					},
+					{
+						"name": "customer_code",
+						"type": "String"
+					},
+					{
+						"name": "channel_description",
+						"type": "String"
+					},
+					{
+						"name": "dse",
+						"type": "String"
+					},
+					{
+						"name": "pcode",
+						"type": "String"
+					},
+					{
+						"name": "customer_type",
+						"type": "String"
+					},
+					{
+						"name": "hsn_code",
+						"type": "String"
+					},
+					{
+						"name": "category",
+						"type": "String"
+					},
+					{
+						"name": "brand",
+						"type": "String"
+					},
+					{
+						"name": "brandform",
+						"type": "String"
+					},
+					{
+						"name": "quantity",
+						"type": "String"
+					},
+					{
+						"name": "gross_value",
+						"type": "String"
+					},
+					{
+						"name": "discount",
+						"type": "String"
+					},
+					{
+						"name": "taxable_scheme",
+						"type": "String"
+					},
+					{
+						"name": "cgsttax",
+						"type": "String"
+					},
+					{
+						"name": "sgsttax",
+						"type": "String"
+					},
+					{
+						"name": "igsttax",
+						"type": "String"
+					},
+					{
+						"name": "cesstax",
+						"type": "String"
+					},
+					{
+						"name": "mracc_code",
+						"type": "String"
+					},
+					{
+						"name": "mracc_desc",
+						"type": "String"
+					},
+					{
+						"name": "vendor",
+						"type": "String"
+					},
+					{
+						"name": "net_amount",
+						"type": "String"
+					},
+					{
+						"name": "tax_on_discount",
+						"type": "String"
+					},
+					{
+						"name": "tax_on_scheme",
+						"type": "String"
+					},
+					{
+						"name": "tax_in_rlp",
+						"type": "String"
+					},
+					{
+						"name": "retailing",
+						"type": "String"
+					},
+					{
+						"name": "gross_in_slp",
+						"type": "String"
+					},
+					{
+						"name": "po_no",
+						"type": "String"
+					},
+					{
+						"name": "dse_code",
+						"type": "String"
+					},
+					{
+						"name": "msu",
+						"type": "String"
+					},
+					{
+						"name": "reason",
+						"type": "String"
+					},
+					{
+						"name": "dist_gstinno",
+						"type": "String"
+					},
+					{
+						"name": "ret_gstinno",
+						"type": "String"
+					},
+					{
+						"name": "srn_ref_no",
+						"type": "String"
+					},
+					{
+						"name": "composite",
+						"type": "String"
+					},
+					{
+						"name": "cgsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "sgsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "igsttax_rate",
+						"type": "String"
+					},
+					{
+						"name": "cesstax_rate",
+						"type": "String"
+					},
+					{
+						"name": "branch_code",
+						"type": "String"
+					},
+					{
+						"name": "branch_name",
+						"type": "String"
+					},
+					{
+						"name": "order_mode",
+						"type": "String"
+					},
+					{
+						"name": "tc_code",
+						"type": "String"
+					},
+					{
+						"name": "tc_name",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": []
 		},
@@ -7611,7 +8134,9 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/RTRM_table')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/CopyLeap_Staging-To-DB_2')]",
@@ -15045,648 +15570,6 @@
 				"annotations": []
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging_Cloud1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Cloud1FilesMetaData",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "S3LeapDataSet_Cloud1_Folder",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems",
-								"itemName",
-								"lastModified"
-							],
-							"storeSettings": {
-								"type": "AmazonS3ReadSettings",
-								"recursive": true,
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "Cloud1FilesFilter",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Cloud1FilesMetaData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud1FilesMetaData').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "ForEachCloud1FolderFiles",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Cloud1FilesFilter",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud1FilesFilter').output.value",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "LeapCSV_Cloud1_Staging",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "BinarySource",
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"modifiedDatetimeStart": {
-													"value": "@pipeline().parameters.windowStart",
-													"type": "Expression"
-												},
-												"modifiedDatetimeEnd": {
-													"value": "@pipeline().parameters.windowEnd",
-													"type": "Expression"
-												}
-											}
-										},
-										"sink": {
-											"type": "BinarySink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"preserve": [
-											"Attributes"
-										],
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2
-									},
-									"inputs": [
-										{
-											"referenceName": "S3LeapDataSet_Cloud1_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "LeapStorageSourceDataset",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "DeleteFiles_Cloud1",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud1_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud1_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud1_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud1_File')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging_Cloud2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Cloud2FilesMetaData",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "S3LeapDataSet_Cloud2_Folder",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems",
-								"itemName",
-								"lastModified"
-							],
-							"storeSettings": {
-								"type": "AmazonS3ReadSettings",
-								"recursive": true,
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "Cloud2FilesFilter",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Cloud2FilesMetaData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud2FilesMetaData').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "ForEachCloud2FolderFiles",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Cloud2FilesFilter",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud2FilesFilter').output.value",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "LeapCSV_Cloud2_Staging",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "BinarySource",
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"modifiedDatetimeStart": {
-													"value": "@pipeline().parameters.windowStart",
-													"type": "Expression"
-												},
-												"modifiedDatetimeEnd": {
-													"value": "@pipeline().parameters.windowEnd",
-													"type": "Expression"
-												}
-											}
-										},
-										"sink": {
-											"type": "BinarySink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"preserve": [
-											"Attributes"
-										],
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2
-									},
-									"inputs": [
-										{
-											"referenceName": "S3LeapDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "LeapStorageSourceDataset",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "DeleteFiles_Cloud2",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud2_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud2_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud2_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud2_File')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyS3-To-Staging_Cloud3')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Cloud3FilesMetaData",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "S3LeapDataSet_Cloud3_Folder",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"childItems",
-								"itemName",
-								"lastModified"
-							],
-							"storeSettings": {
-								"type": "AmazonS3ReadSettings",
-								"recursive": true,
-								"modifiedDatetimeStart": {
-									"value": "@pipeline().parameters.windowStart",
-									"type": "Expression"
-								},
-								"modifiedDatetimeEnd": {
-									"value": "@pipeline().parameters.windowEnd",
-									"type": "Expression"
-								}
-							},
-							"formatSettings": {
-								"type": "BinaryReadSettings"
-							}
-						}
-					},
-					{
-						"name": "Cloud3FilesFilter",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Cloud3FilesMetaData",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud3FilesMetaData').output.childItems",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().type, 'File')",
-								"type": "Expression"
-							}
-						}
-					},
-					{
-						"name": "ForEachCloud3FolderFiles",
-						"type": "ForEach",
-						"dependsOn": [
-							{
-								"activity": "Cloud3FilesFilter",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Cloud3FilesFilter').output.value",
-								"type": "Expression"
-							},
-							"activities": [
-								{
-									"name": "LeapCSV_Cloud3_Staging",
-									"type": "Copy",
-									"dependsOn": [],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"source": {
-											"type": "BinarySource",
-											"storeSettings": {
-												"type": "AmazonS3ReadSettings",
-												"recursive": true,
-												"modifiedDatetimeStart": {
-													"value": "@pipeline().parameters.windowStart",
-													"type": "Expression"
-												},
-												"modifiedDatetimeEnd": {
-													"value": "@pipeline().parameters.windowEnd",
-													"type": "Expression"
-												}
-											}
-										},
-										"sink": {
-											"type": "BinarySink",
-											"storeSettings": {
-												"type": "AzureBlobStorageWriteSettings"
-											}
-										},
-										"enableStaging": false,
-										"preserve": [
-											"Attributes"
-										],
-										"validateDataConsistency": false,
-										"dataIntegrationUnits": 2
-									},
-									"inputs": [
-										{
-											"referenceName": "S3LeapDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "LeapStorageSourceDataset",
-											"type": "DatasetReference",
-											"parameters": {}
-										}
-									]
-								},
-								{
-									"name": "DeleteFiles_Cloud3",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "LeapCSV_Cloud3_Staging",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "S3LeapDataSet_Cloud3_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"logStorageSettings": {
-											"linkedServiceName": {
-												"referenceName": "NCSdataStorageLink",
-												"type": "LinkedServiceReference"
-											},
-											"path": "log"
-										},
-										"enableLogging": true,
-										"storeSettings": {
-											"type": "AmazonS3ReadSettings",
-											"recursive": true
-										}
-									}
-								}
-							]
-						}
-					}
-				],
-				"parameters": {
-					"windowStart": {
-						"type": "string"
-					},
-					"windowEnd": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Leap Data Pipeline"
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud3_Folder')]",
-				"[concat(variables('factoryId'), '/datasets/S3LeapDataSet_Cloud3_File')]"
-			]
 		}
 	]
 }

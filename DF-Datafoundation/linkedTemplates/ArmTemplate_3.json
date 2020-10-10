@@ -13,6 +13,280 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DTA_INACTBranch_NCS_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "PnGDataFoundation",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "DF_DBConnection/NCS Tables"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "BranchId",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "BRANCHCODE",
+						"type": "varchar"
+					},
+					{
+						"name": "timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "Filename",
+						"type": "varchar"
+					},
+					{
+						"name": "LastModifiedDatetime",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					},
+					{
+						"name": "TimeStampIns",
+						"type": "smalldatetime",
+						"precision": 16,
+						"scale": 0
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tblDTAInactiveBranch"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_s21')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "DataFoundationDW",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlDWTable",
+				"schema": [
+					{
+						"name": "document_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "apply_to_doc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "document_date",
+						"type": "nvarchar"
+					},
+					{
+						"name": "transaction_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "subbrandform_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "prod_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "channel_description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse",
+						"type": "nvarchar"
+					},
+					{
+						"name": "pcode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "customer_type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "hsn_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "category",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brand",
+						"type": "nvarchar"
+					},
+					{
+						"name": "brandform",
+						"type": "nvarchar"
+					},
+					{
+						"name": "quantity",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_value",
+						"type": "nvarchar"
+					},
+					{
+						"name": "discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "taxable_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "mracc_desc",
+						"type": "nvarchar"
+					},
+					{
+						"name": "vendor",
+						"type": "nvarchar"
+					},
+					{
+						"name": "net_amount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_discount",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_on_scheme",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tax_in_rlp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "retailing",
+						"type": "nvarchar"
+					},
+					{
+						"name": "gross_in_slp",
+						"type": "nvarchar"
+					},
+					{
+						"name": "po_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dse_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "msu",
+						"type": "nvarchar"
+					},
+					{
+						"name": "reason",
+						"type": "nvarchar"
+					},
+					{
+						"name": "dist_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ret_gstinno",
+						"type": "nvarchar"
+					},
+					{
+						"name": "srn_ref_no",
+						"type": "nvarchar"
+					},
+					{
+						"name": "composite",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "sgsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "igsttax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "cesstax_rate",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "branch_name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "order_mode",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_code",
+						"type": "nvarchar"
+					},
+					{
+						"name": "tc_name",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "tmpPSR"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LOCM_table')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1246,301 +1520,6 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": "NC_RETAILER_SUBD"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RETAIL_NCS_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PnGDataFoundation",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/NCS Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "BRANCHCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTCODE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "CHANNEL",
-						"type": "varchar"
-					},
-					{
-						"name": "DSE",
-						"type": "varchar"
-					},
-					{
-						"name": "CUSTTYPE",
-						"type": "varchar"
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NC_RETAILER_Current"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RTRM_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "TASDatabase",
-					"type": "LinkedServiceReference"
-				},
-				"folder": {
-					"name": "DF_DBConnection/LEAP Tables"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "branch_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "branch_location",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "address_1",
-						"type": "nvarchar"
-					},
-					{
-						"name": "address_2",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pin_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "area_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "area",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town",
-						"type": "nvarchar"
-					},
-					{
-						"name": "town_class",
-						"type": "nvarchar"
-					},
-					{
-						"name": "city",
-						"type": "nvarchar"
-					},
-					{
-						"name": "state",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mobile_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "phone_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "contact_person",
-						"type": "nvarchar"
-					},
-					{
-						"name": "stl_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dse_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "frequency",
-						"type": "nvarchar"
-					},
-					{
-						"name": "distance",
-						"type": "nvarchar"
-					},
-					{
-						"name": "class_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "class",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "channel",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subchannel_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "subchannel",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mr_account_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "mr_account_name",
-						"type": "nvarchar"
-					},
-					{
-						"name": "credit_limit",
-						"type": "nvarchar"
-					},
-					{
-						"name": "credit_period",
-						"type": "nvarchar"
-					},
-					{
-						"name": "invoice_limit",
-						"type": "nvarchar"
-					},
-					{
-						"name": "certificate_type",
-						"type": "nvarchar"
-					},
-					{
-						"name": "gst_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "pan_no",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dl_number",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dl_expiry_date",
-						"type": "nvarchar"
-					},
-					{
-						"name": "email",
-						"type": "nvarchar"
-					},
-					{
-						"name": "dob",
-						"type": "nvarchar"
-					},
-					{
-						"name": "doa",
-						"type": "nvarchar"
-					},
-					{
-						"name": "status",
-						"type": "nvarchar"
-					},
-					{
-						"name": "default_warehouse_code",
-						"type": "nvarchar"
-					},
-					{
-						"name": "default_warehouse",
-						"type": "nvarchar"
-					},
-					{
-						"name": "restricted_orderswap_status",
-						"type": "nvarchar"
-					},
-					{
-						"name": "lattitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "longitude",
-						"type": "nvarchar"
-					},
-					{
-						"name": "retailer_radius",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileSetId",
-						"type": "bigint",
-						"precision": 19
-					},
-					{
-						"name": "Filename",
-						"type": "varchar"
-					},
-					{
-						"name": "LastModifiedDatetime",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					},
-					{
-						"name": "TimeStampIns",
-						"type": "smalldatetime",
-						"precision": 16,
-						"scale": 0
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "tmpRawLEAPTAS_RTRM"
 				}
 			},
 			"dependsOn": []
